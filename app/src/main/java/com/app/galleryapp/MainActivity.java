@@ -9,6 +9,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setSupportActionBar((Toolbar) findViewById(R.id.profileToolBar));
+
         initImageLoader();
 
         if(checkPermissionsArray(Permissions.PERMISSIONS)){
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity{
     private void setupViewPager(){
         SectionsPagerAdapter adapter =  new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new GalleryFragment());
-        adapter.addFragment(new PhotoFragment());
+        adapter.addFragment(new CameraFragment());
 
         mViewPager = (ViewPager) findViewById(R.id.viewpager_container);
         mViewPager.setAdapter(adapter);
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity{
         tabLayout.setupWithViewPager(mViewPager);
 
         tabLayout.getTabAt(0).setText(getString(R.string.gallery));
-        tabLayout.getTabAt(1).setText(getString(R.string.photo));
+        tabLayout.getTabAt(1).setText(getString(R.string.camera));
 
     }
 

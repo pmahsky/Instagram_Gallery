@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ public class GalleryFragment extends Fragment {
     private ArrayList<String> directories;
     private String mAppend = "file:/";
     private String mSelectedImage;
+    private NestedScrollView nestedScrollView;
 
 
     @Nullable
@@ -50,6 +52,9 @@ public class GalleryFragment extends Fragment {
         directorySpinner = (Spinner) view.findViewById(R.id.spinnerDirectory);
         mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
         mProgressBar.setVisibility(View.GONE);
+
+        nestedScrollView= (NestedScrollView)view.findViewById(R.id.nested_scrollview);
+
         directories = new ArrayList<>();
 
         ImageView shareClose = (ImageView) view.findViewById(R.id.ivCloseShare);
@@ -158,6 +163,7 @@ public class GalleryFragment extends Fragment {
 
                 setImage(imgURLs.get(position), galleryImage, mAppend);
                 mSelectedImage = imgURLs.get(position);
+
             }
         });
 
