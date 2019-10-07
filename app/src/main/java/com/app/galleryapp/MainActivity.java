@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity{
             verifyPermissions(Permissions.PERMISSIONS);
         }
 
+        Log.d(TAG,"Inside onCreate ===");
     }
 
     private void initImageLoader(){
