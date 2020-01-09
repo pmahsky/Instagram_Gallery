@@ -9,10 +9,16 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        def ANDROID_HOME = System.getenv("BUILD_NUMBER") ? System.getenv("ANDROID_HOME") : "0"
+
+        print("ANDROID_HOME_PATH: $ANDROID_HOME")
+
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
